@@ -1,22 +1,22 @@
 resilience4j:
     circuitbreaker:
         backends:
-            circuitA:
-                ring-buffer-size-in-closed-state: 5
-                ring-buffer-size-in-half-open-state: 5
-                wait-duration-in-open-state : 5000
-                failure-rate-threshold: 50
+            circuitA: # 断路器名
+                ring-buffer-size-in-closed-state: 5 # 环形缓冲区是在封闭状态下使用的大小
+                ring-buffer-size-in-half-open-state: 5 # HalfOpen 状态下的大小
+                wait-duration-in-open-state : 5000 # Open持续时间
+                failure-rate-threshold: 50 # 到打开状态的阈值
             circuitB:
                 ring-buffer-size-in-closed-state: 5
                 ring-buffer-size-in-half-open-state: 5
                 wait-duration-in-open-state : 5000
                 failure-rate-threshold: 50
-    ratelimiter:
+    ratelimiter: # 限制每单位时间的执行次数
         limiters:
             limiterA:
-                limit-for-period: 1
-                limit-refresh-period-in-millis: 5000
-                timeout-in-millis: 1000
+                limit-for-period: 1 # 每时间单位＃可执行处理数
+                limit-refresh-period-in-millis: 5000  # 单位时间（毫秒）
+                timeout-in-millis: 1000 # 超时时间 （毫秒）
             limiterB:
                 limit-for-period: 1
                 limit-refresh-period-in-millis: 5000
